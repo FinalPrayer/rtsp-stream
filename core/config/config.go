@@ -29,7 +29,7 @@ type Auth struct {
 
 // ProcessLogging describes information about the logging mechanism of the transcoding FFMPEG process
 type ProcessLogging struct {
-	Enabled    bool   `envconfig:"PROCESS_LOGGING" default:"false"`                    // Option to set logging for transcoding processes
+	Enabled    bool   `envconfig:"PROCESS_LOGGING" default:"true"`                    // Option to set logging for transcoding processes
 	Directory  string `envconfig:"PROCESS_LOGGING_DIR" default:"/var/log/rtsp-stream"` // Directory for the logs
 	MaxSize    int    `envconfig:"PROCESS_LOGGING_MAX_SIZE" default:"500"`             // Maximum size of kept logging files in megabytes
 	MaxBackups int    `envconfig:"PROCESS_LOGGING_MAX_BACKUPS" default:"3"`            // Maximum number of old log files to retain
@@ -47,7 +47,7 @@ type Blacklist struct {
 // Process describes information regarding the transcoding process
 type Process struct {
 	CleanupEnabled bool          `envconfig:"CLEANUP_ENABLED" default:"true"` // Option to turn of cleanup
-	CleanupTime    time.Duration `envconfig:"CLEANUP_TIME" default:"2m0s"`    // Time period between process cleaning
+	CleanupTime    time.Duration `envconfig:"CLEANUP_TIME" default:"10s"`    // Time period between process cleaning
 	StoreDir       string        `envconfig:"STORE_DIR" default:"./videos"`   // Directory to store / service video chunks
 	KeepFiles      bool          `envconfig:"KEEP_FILES" default:"false"`     // Option for not deleting files
 	Audio          bool          `envconfig:"AUDIO_ENABLED" default:"true"`   // Option for enabling audio
@@ -55,7 +55,7 @@ type Process struct {
 
 // Specification describes the application context settings
 type Specification struct {
-	Debug bool `envconfig:"DEBUG" default:"false"` // Indicates if debug log should be enabled or not
+	Debug bool `envconfig:"DEBUG" default:"true"` // Indicates if debug log should be enabled or not
 	Port  int  `envconfig:"PORT" default:"8080"`   // Port that the application listens on
 
 	CORS
